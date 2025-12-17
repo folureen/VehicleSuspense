@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
+using Sandbox.Game.Entities.Blocks;
 using Sandbox.Game.EntityComponents;
 using Sandbox.ModAPI.Ingame;
 using Sandbox.ModAPI.Interfaces;
@@ -20,25 +21,17 @@ using VRageMath;
 
 namespace IngameScript
 {
-    public partial class Program : MyGridProgram
+    public class Logger : MyGridProgram
     {
-
-        int _counter = 0;
-
-        public Program()
+        private string outputTargetName;
+        public Logger(string LCDName)
         {
-            Runtime.UpdateFrequency = UpdateFrequency.Update1;
+            outputTargetName = LCDName;
         }
 
-        public void Save()
+        public string OutputTargetName()
         {
-        }
-
-        public void Main(string argument, UpdateType updateSource)
-        {
-            Logger logger = new Logger("FUCKING OUTPUT NAME");
-
-            Echo(logger.OutputTargetName() + ++_counter);
+            return outputTargetName;
         }
     }
 }
